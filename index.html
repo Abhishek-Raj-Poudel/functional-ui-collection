@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./output.css">
+    <title>Jayenchy UI Test</title>
+</head>
+
+<body>
+    <div class="h-screen w-full flex justify-center items-center">
+        <button id="discoverButton"
+            class="group w-fit px-6 py-4 border-2 border-slate-950 hover:border-primary text-slate-950 hover:text-primary font-secondary text-sm uppercase tracking-widest m-0 duration-300">
+            <span
+                class="pb-1 cursor-pointer bg-[length:0%_1px] bg-[0%_100%] bg-no-repeat bg-gradient-to-b from-primary to-primary group-hover:bg-[length:100%_1px] duration-300 font-normal ">Enquire
+                Now</span>
+        </button>
+    </div>
+
+    <dialog class="hidden absolute top-0  z-50 bg-black bg-opacity-50 w-full h-screen  justify-center items-center"
+        id='form'>
+        <form class="grid gap-4 px-8  py-8 bg-white z-50" method="POST" action="/contact">
+            <div class="flex items-center gap-2">
+                <p class="text-lg font-secondary text-start">Fill up the form below with the designs you want to craft
+                </p>
+                <div class="border p-2">
+                    <svg id="closeBtn" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="feather feather-x">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </div>
+            </div>
+            <input class="border border-slate-700 rounded-none focus:outline-primary text-slate-950 p-3 " type="text"
+                type="name" name="full_name" placeholder="Name" autocomplete="given-name">
+            <input class="border border-slate-700 rounded-none  focus:outline-primary text-slate-950 p-3 " type="email"
+                type="email" name="email" placeholder="Email" autocomplete="email">
+            <input class="border border-slate-700 rounded-none  focus:outline-primary text-slate-950 p-3 " type="number"
+                type="tel" name="contact_number" placeholder="Number" autocomplete="tel">
+            <select name="category" id="category" name="category"
+                class="bg-transparent border border-slate-700 rounded-none focus:outline-primary text-slate-950 p-3">
+                <option>What you want to customize?</option>
+                <option value="Necklace">Necklace</option>
+                <option value="Brooch">Brooch</option>
+                <option value=" Bracelate">Bracelate</option>
+                <option value="Ear Ring">Ear ring</option>
+                <option value=" Ring">Ring</option>
+            </select>
+            <input name="date" class="border border-slate-700 rounded-none  focus:outline-primary text-slate-950 p-3"
+                type="date" placeholder="Appointment Date">
+            <input name="time" class="border border-slate-700 rounded-none  focus:outline-primary text-slate-950 p-3"
+                type="time" placeholder="Appointment Time">
+            <textarea name="requirements" id="" cols="30" rows="5" placeholder="Any Additional Requirements?"
+                name="message"
+                class="border border-slate-700 rounded-none  focus:outline-primary text-slate-950 p-3"></textarea>
+            <button
+                class="group w-fit px-10 py-4 border border-slate-950 text-slate-950 focus:outline-primary font-secondary text-sm uppercase tracking-widest">
+                <span
+                    class="pb-1 cursor-pointer bg-[length:0%_1px] bg-[0%_100%] bg-no-repeat bg-gradient-to-b from-black to-black group-hover:bg-[length:100%_1px] duration-300">Enquire
+                    Now</span>
+            </button>
+        </form>
+    </dialog>
+    <script>
+        const form = document.getElementById("form");
+        const discoverButton = document.getElementById("discoverButton");
+        const closeBtn = document.getElementById("closeBtn");
+
+        discoverButton.addEventListener('click', () => {
+            firstFrom.classList.remove('hidden');
+            firstFrom.classList.add('flex');
+        });
+
+        closeBtn.addEventListener('click', closePopup);
+        form.addEventListener('click', (event) => {
+            // Prevent closing the dialog if the click occurred inside the form
+            if (event.target === form) {
+                closePopup();
+            }
+        });
+
+        function closePopup() {
+            console.log("here");
+            form.classList.add("hidden");
+            form.classList.remove("flex");
+        }
+    </script>
+
+
+</body>
+
+</html>
